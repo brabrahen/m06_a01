@@ -25,7 +25,6 @@ const findAllPaletas = async () => {
 // Restante do código...
 findAllPaletas();
 
-// NOVO TRECHO
 const findByIdPaletas = async () => {
   const id = document.getElementById('idPaleta').value;
 
