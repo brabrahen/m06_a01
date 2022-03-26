@@ -13,7 +13,7 @@ const paletas = [
     sabor: 'Açaí com Leite Condensado',
     descricao:
       'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
-    foto: 'assets/images/acai-com-leite-condensado.png',
+    foto: '/assets/images/acai-com-leite-condensado.png',
     preco: 10.0,
   },
   {
@@ -21,7 +21,7 @@ const paletas = [
     sabor: 'Banana com Nutella',
     descricao:
       'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
-    foto: 'assets/images/banana-com-nutella.png',
+    foto: '/assets/images/banana-com-nutella.png',
     preco: 10.0,
   },
   {
@@ -29,7 +29,7 @@ const paletas = [
     sabor: 'Chocolate Belga',
     descricao:
       'Quam vulputate dignissim suspendisse in est ante in nibh mauris.',
-    foto: 'assets/images/chocolate-belga.png',
+    foto: '/assets/images/chocolate-belga.png',
     preco: 7.0,
   },
 ];
@@ -42,13 +42,14 @@ app.get('/paletas', (req, res) => {
   res.send(paletas);
 });
 
-app.get('/paletas/find/(:id)?', (req, res) => {
+app.get('/find-paleta/(:id)?', (req, res) => {
   const idParam = req.params.id;
-  const paleta = paletas.find((paleta) => paleta.id == idParam);
-  if (paleta === undefined) {
-    res.send({ message: 'NEnhuma paleta foi encontrada' });
+  const unicaPaleta = paletas.find((paleta) => paleta.id == idParam);
+  console.log(unicaPaleta)
+  if (unicaPaleta === undefined) {
+    res.send({ message: 'Nenhuma paleta foi encontrada' });
   }
-  res.send(paleta);
+  res.send(unicaPaleta);
 });
 
 app.listen(port, () => {
